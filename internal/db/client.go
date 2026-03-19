@@ -7,10 +7,8 @@ import (
 )
 
 type DbClient interface {
-    //CreateTables() error
-    //GetLastState() (global.State, error)
-    //SetState(state global.State) error
-    //LoadHistory() ([]global.State, error)
+    GetTables() ([]mysql.Table, error)
+    SetEvents(events []config.Event) (error)
     
     /*
     
@@ -31,7 +29,7 @@ type DbClient interface {
     */
 }
 
-func NewClient(n config.MasterNode) (DbClient, error) {
+func NewClient(n config.Node) (DbClient, error) {
     switch n.Flavor {
     case "mysql":
         return mysql.New(n)
