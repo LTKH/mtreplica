@@ -7,8 +7,8 @@ import (
 )
 
 type DbClient interface {
-    GetTables() ([]mysql.Table, error)
-    SetEvents(events []config.Event) (error)
+    GetTablesInfo(schema string) (map[string]config.Table, error)
+    SetEvents(tables map[string]config.Table, events []config.Event) (error)
     
     /*
     

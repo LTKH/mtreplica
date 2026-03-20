@@ -29,6 +29,11 @@ type Event struct {
     Timestamp uint32
 }
 
+type Table struct {
+    Timestamp   int64
+    PrimaryKeys map[string]int
+}
+
 func NewConfig(filename string) (*Config, error) {
 
     cfg := &Config{}
